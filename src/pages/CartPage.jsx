@@ -5,7 +5,7 @@ import "../App.css";
 import { clearCart } from "../utils/cartSlice";
 import PayPalButton from "../utils/PayPalButton";
 import PaymentSuccess from "../components/PaymentSuccess";
-import {loadStripe} from '@stripe/stripe-js';
+
 import CartItem from "../components/CartItem";
 import { useState } from "react";
 import EmptyCart from "../components/EmptyCart";
@@ -69,29 +69,6 @@ const CartPage = () => {
   };
 
 
-  // const makePayment = async()=>{
-  //   const stripe = await loadStripe("pk_test_51OjEUeSF0pKixHnnzy6FdPlOvIy3za2GynzjEQcKwUDZDuWs6B2fddFqQKDFC9Z5quv2lJHrqp5YGgyYOiiH3kDt00gmxoXcD4");
-    
-  //   const body = {
-  //     products:cartItems
-  //   }
-  //   const headers = {
-  //     "Content-Type" :"application/json"
-  //   }
-  //   const response = await fetch("http://localhost:7000/api/create-checkout-session",{
-  //     method:"POST",
-  //     headers:headers,
-  //     body:JSON.stringify(body)
-  //   })
-
-  //   const session  = await response.json();
-
-
-  //   const result = stripe.redirectToCheckout({
-  //     sessionId:session.id
-  //   });
-   
-  // }
 
  
   return paymentDetails?.status === "COMPLETED" ? (
