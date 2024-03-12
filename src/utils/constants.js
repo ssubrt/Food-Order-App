@@ -6,4 +6,7 @@ export const MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_M
 // &catalog_qa=undefined&submitAction=ENTER`;
 
 //export const RESTAURANT_LIST_MOBILE = "https://www.swiggy.com/mapi/homepage/getCards?lat=23.369726076519406&lng=85.33414583862306";
-export const RESTAURANT_LIST_MOBILE = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.369726076519406&lng=85.33414583862306&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+// export const RESTAURANT_LIST_MOBILE = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.369726076519406&lng=85.33414583862306&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+export const CORSPROXY = "https://corsproxy.org/?";
+
+export const RESTAURANT_LIST_MOBILE = "https://www.swiggy.com/mapi/homepage/getCards?lat=23.369726076519406&lng=85.33414583862306";
