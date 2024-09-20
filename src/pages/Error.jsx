@@ -22,7 +22,7 @@ const Error = () => {
     <h1>Oops!!</h1>
     <h2>Something Went Wrong</h2>
     <h2>
-      {err.status}: {err.statusText}
+      {error.status}: {error.statusText}
     </h2>
   </div>
   )

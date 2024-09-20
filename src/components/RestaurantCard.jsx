@@ -12,10 +12,10 @@ const RestaurantCard = ({data}) => {
   
   return (
     
-    <Link to={`/restaurants/${id}`} className='max-w-xs border-box inline-flex flex-col space-y-2 p-4 border hover:scale-110 transition duration-300 ease-in  bg-slate-100 hover:bg-gray-200 rounded-lg'>
+    <Link to={`/restaurants/${id}`} className='max-w-xs w-full  border-box inline-flex flex-col space-y-2 p-4 border hover:scale-110 transition duration-300 ease-in  bg-slate-100 hover:bg-gray-200 rounded-lg'>
 
       <div className='w-full h-40'>
-        <img className='w-full h-full object-cover object-center' src={RESTAURANT_IMG_CDN+cloudinaryImageId} loading='lazy'/>
+        <img className='w-full h-full object-cover rounded-lg object-center' src={RESTAURANT_IMG_CDN+cloudinaryImageId} loading='lazy'/>
       </div>
       <div className='w-full overflow-clip'>
         <h1 className='font-semibold text-md'>{name}</h1>

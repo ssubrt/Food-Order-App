@@ -5,14 +5,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleVegOnly } from "../utils/itemSlice";
 import { RESTAURANT_IMG_CDN } from "../utils/constants";
 
-const RestaurantInfo = ({ info }) => {
-  console.log(info)
+const RestaurantInfo = ({ id }) => {
+  console.log("id", id);
+  const { restaurants } = useSelector( store => store.restaurants)
+  console.log("restaurants: ", restaurants);
+  const resInfo = restaurants.filter((item) => item.info.id === id)[0]
+  console.log("resList :", resInfo)
   const dispatch = useDispatch();
   const isVeg = useSelector((store) => store.item.isVegOnly);
 
   const toggleIsVeg = () => {
-    dispatch(toggleVegOnly())
-  }
+    dispatch(toggleVegOnly());
+  };
 
   
 
@@ -21,13 +25,13 @@ const RestaurantInfo = ({ info }) => {
     name,
     costForTwoMessage,
     avgRating,
-    areaName,
+   
     totalRatingsString,
     cuisines,
     veg,
     cloudinaryImageId,
     sla: { deliveryTime },
-  } = info;
+  } = resInfo.info;
 
   return (
     <div className="space-y-5">
@@ -80,7 +84,7 @@ const RestaurantInfo = ({ info }) => {
         </div>
       </div>
 
-      { (veg) ? (
+      {veg ? (
         <div className="space-x-2">
           <FaToggleOn />
           <span className="text-xs font-bold text-slate-500">PURE VEG</span>
@@ -88,8 +92,21 @@ const RestaurantInfo = ({ info }) => {
       ) : (
         <div className="space-x-2 flex items-center">
           <span className="text-xs font-bold text-slate-500">VEG ONLY</span>
-          <button className={`w-10 h-6 rounded-2xl relative flex items-center transition-all ${(isVeg)?(`bg-green-500`):(`bg-black`)} `} onClick={() => toggleIsVeg()}>
-            <span className={`block absolute w-4 h-4 transition-all rounded-full ${(isVeg)?(`left-[calc(100%-20px)] bg-white`):(`left-1 bg-green-500`)}  `}></span>
+          <button
+            className={`w-10 h-6 rounded-2xl relative flex items-center transition-all ${
+              isVeg ? `bg-green-500` : `bg-slate-200`
+            } `}
+            onClick={() => toggleIsVeg()}
+          >
+            <span
+              className={`block absolute w-4 h-4 transition-all rounded-full ${
+                isVeg
+                  ? `left-[calc(100%-20px)] bg-white`
+                  : `left-1 bg-green-500`
+              }  `}
+            ></span>
+
+
           </button>
 
 

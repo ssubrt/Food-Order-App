@@ -1,15 +1,12 @@
-import React, { useEffect, useMemo, useState } from "react";
-import {
-  RESTAURANT_LIST_DESKTOP,
-  RESTAURANT_LIST_MOBILE,
-} from "../utils/constants";
+import { useEffect, useState } from "react";
+import useRestaurants from "../utils/useRestaurants";
 import RestaurantCard from "./RestaurantCard";
 import { RxDropdownMenu } from "react-icons/rx";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import Shimmer from "./Shimmer";
 import NotFound from "../assets/notFound.png";
 import {
-  isMobile,
+  
   sortByCost,
   sortByDeliveryTime,
   sortByRating,
@@ -18,12 +15,22 @@ import SortRadio from "./SortRadio";
 import "../App.css";
 
 const Restaurants = () => {
-  const [restaurantList, setRestaurantList] = useState([]);
+ 
+
+  const { error, isLoading, restaurantList} = useRestaurants();
+
+
   const [filteredList, setFilteredList] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [error, setError] = useState(null);
+  
   const [sortBy, setSortBy] = useState("relevance");
   const [showSort, setShowSort] = useState(false);
+
+  const [errors, setError] = useState(null);
+
+  if(restaurantList.length > 0 && filteredList.length === 0){
+    setFilteredList(restaurantList);
+  }
 
   const toggleShowSort = () => {
     setShowSort(!showSort);
@@ -33,9 +40,6 @@ const Restaurants = () => {
     setFilteredList(restaurantList);
   };
 
-  useEffect(() => {
-    getResList();
-  }, []);
 
   useEffect(() => sortRes(), [sortBy]);
 
@@ -60,41 +64,7 @@ const Restaurants = () => {
     }
   };
 
-  async function getResList() {
-    try {
-      const list = await fetch(
-        isMobile()
-          ? RESTAURANT_LIST_MOBILE
-          : RESTAURANT_LIST_DESKTOP
-      );
-      const json = await list.json();
-
-      let resList;
-
-      if (isMobile()) {
-        resList =
-        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-      } else {
-        const list0 =
-          json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants;
-        const list1 =
-          json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants;
-        const list2 =
-          json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants;
-
-        resList = list0 || list1 || list2;
-      }
-      setRestaurantList(resList);
-      setFilteredList(resList);
-    } catch (e) {
-      console.log("There was an error");
-    }
-  }
-
+ 
   const handleSearch = (e) => {
     const searchQuery = e.target.value;
     setSearchText(searchQuery);
@@ -158,20 +128,20 @@ const Restaurants = () => {
           </div>
         </div>
        <div>
-        <div className="res-header bestOfferSection fond-bold uppercase">what's on your mind ?</div>
+        <div className="res-header bestOfferSection fond-bold uppercase">whats on your mind ?</div>
       
       </div>
 
         <div id="restaurants" className="flex justify-center w-full mt-4">
-          {error ? (
+          {errors || error  ? (
             <div className="flex flex-col justify-center bg-red space-y-4">
               <img src={NotFound} className="w-56" />
-              <p className="text-center">{error.message}</p>
+              <p className="text-center">{errors.message}</p>
             </div>
           ) : (
             <div className="basis-full">
               <div className="grid justify-items-center grid-cols-[repeat(auto-fill,minmax(280px,1fr))]  gap-y-12 lg:gap-x-8 md:gap-x-12">
-                {!filteredList || filteredList.length === 0
+                {isLoading
                   ? [1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
                       <Shimmer key={i} />
                     ))

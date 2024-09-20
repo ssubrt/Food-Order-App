@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import RestaurantInfo from "../components/RestaurantInfo";
 import Menu from "../components/Menu";
 import { useParams } from "react-router-dom";
@@ -14,7 +14,6 @@ const RestaurantMenu = () => {
 
   const [resInfo, resMenu] = useRestaurantMenu(id);
   const [showBrowseMenu, setShowBrowseMenu] = useState(false);
-  
 
   useEffect(() => {
     window.scrollTo(top);
@@ -24,7 +23,7 @@ const RestaurantMenu = () => {
 
   const handleRemoveItems = () => {
     dispatch(clearCart());
-  }
+  };
 
   const handleBrowseMenu = () => {
     const body = document.querySelector("body");
@@ -54,42 +53,39 @@ const RestaurantMenu = () => {
               </p>
 
               <div className="flex justify-between gap-3">
-                <button 
+                <button
                   className="flex-1 border-2 border-green-600 py-3 bg-white hover:shadow-lg"
                   onClick={() => dispatch(setShowClearCart())}
-
                 >
                   <span className="font-bold text-sm text-green-600">NO</span>
                 </button>
-                <button className="flex-1 border-2 border-green-600 py-3 bg-green-600 hover:shadow-lg" onClick={() => handleRemoveItems()}>
+                <button
+                  className="flex-1 border-2 border-green-600 py-3 bg-green-600 hover:shadow-lg"
+                  onClick={() => handleRemoveItems()}
+                >
                   <span className="font-bold text-sm text-white">
                     YES, START AFRESH
                   </span>
                 </button>
-
               </div>
-
             </div>
           </div>
         ) : null}
 
         {resMenu.length === 0 ? (
-          <h1 className="flex justify-between items-center flex-wrap"><Shimmer/>
-          <Shimmer/>
-          <Shimmer/>
-          <Shimmer/>
-          <Shimmer/>
-          <Shimmer/>
-          <Shimmer/>
-          <Shimmer/>
-          
-
-          
+          <h1 className="flex justify-between items-center flex-wrap">
+            <Shimmer />
+            <Shimmer />
+            <Shimmer />
+            <Shimmer />
+            <Shimmer />
+            <Shimmer />
+            <Shimmer />
+            <Shimmer />
           </h1>
-          
         ) : (
           <>
-            <RestaurantInfo info={resInfo} />
+            <RestaurantInfo id={id} />
             <Menu menu={resMenu} />
             {showBrowseMenu ? (
               <div
