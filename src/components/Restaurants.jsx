@@ -1,14 +1,10 @@
-<<<<<<< HEAD
-import { useEffect, useState } from "react";
+
+
 import useRestaurants from "../utils/useRestaurants";
-=======
+
 import React, { useEffect, useMemo, useState } from "react";
-import {
-  CORSPROXY,
-  RESTAURANT_LIST_DESKTOP,
-  RESTAURANT_LIST_MOBILE,
-} from "../utils/constants";
->>>>>>> 58b674648bfc0cd37b89fe20d93e0048bd851d6b
+
+
 import RestaurantCard from "./RestaurantCard";
 import { RxDropdownMenu } from "react-icons/rx";
 import { FaMagnifyingGlass } from "react-icons/fa6";
@@ -73,46 +69,8 @@ const Restaurants = () => {
     }
   };
 
-<<<<<<< HEAD
+
  
-=======
-async function getResList() {
-    try {
-      const list = await fetch(
-        isMobile()
-          
-          ? CORSPROXY + encodeURIComponent(RESTAURANT_LIST_MOBILE)
-          : CORSPROXY + encodeURIComponent(RESTAURANT_LIST_DESKTOP)
-      );
-      const json = await list.json();
-
-      let resList;
-
-      if (isMobile()) {
-        resList =
-        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-      } else {
-        const list0 =
-          json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants;
-        const list1 =
-          json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants;
-        const list2 =
-          json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants;
-
-        resList = list0 || list1 || list2;
-      }
-      setRestaurantList(resList);
-      setFilteredList(resList);
-    } catch (e) {
-      console.log("There was an error");
-    }
-  }
-
->>>>>>> 58b674648bfc0cd37b89fe20d93e0048bd851d6b
   const handleSearch = (e) => {
     const searchQuery = e.target.value;
     setSearchText(searchQuery);

@@ -14,19 +14,9 @@ export const MENU_API = `https://proxy.cors.sh/https://www.swiggy.com/dapi/menu/
 // ${resId}
 // &catalog_qa=undefined&submitAction=ENTER`;
 
-<<<<<<< HEAD
 
 
-
-
-
-
-// export const RESTAURANT_IMG_CDN = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
-//export const RESTAURANT_LIST_MOBILE = "https://www.swiggy.com/mapi/homepage/getCards?lat=23.369726076519406&lng=85.33414583862306";
-=======
 //export const RESTAURANT_LIST_MOBILE = "https://www.swiggy.com/mapi/homepage/getCards?lat=23.369726076519406&lng=85.33414583862306";
 // export const RESTAURANT_LIST_MOBILE = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.369726076519406&lng=85.33414583862306&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
-export const CORSPROXY = "https://corsproxy.org/?";
 
-export const RESTAURANT_LIST_MOBILE = "https://www.swiggy.com/mapi/homepage/getCards?lat=23.369726076519406&lng=85.33414583862306";
->>>>>>> 58b674648bfc0cd37b89fe20d93e0048bd851d6b
+
