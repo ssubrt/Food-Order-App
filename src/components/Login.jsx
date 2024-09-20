@@ -11,7 +11,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle login logic here (you can add it later)
-    setUserName('Good Morning, '+ name);
+    setUserName('Welcome, '+ name);
     navigate("/");
   };
 
