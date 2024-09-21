@@ -16,7 +16,7 @@ const useRestaurantMenu = (resId) => {
       `${MENU_API}restaurantId=${resId}&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER`,
       {
         headers: {
-          "x-cors-api-key":import.meta.env.VITE_TOKEN ,
+          "x-cors-api-key":"temp_812f2dcb586d1db98e924b8e4394ab17",
         },
       }
     );
